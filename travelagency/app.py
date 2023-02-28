@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/02/28 09:33:30 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/02/28 15:52:55 by Jkutkut            '-----------------'    #
+#    Updated: 2023/02/28 16:16:54 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ class TravelAgencyApp:
         # CHK_BTNS = ["Mochila", "Linterna", "GPS", "Mapa", "Prismáticos", "Cantimplora", "Botiquín", "Crema Solar"]
         # EDIT_TEXTS = ["Nombre", "Apellidos", "Dirección", "Teléfono"]
         # CMBBOX_OPTIONS = ["Madrid", "Alcobendas", "San Sebastián de los Reyes", "Algete", "Pozuelo", "Las Rozas", "Majadahonda", "Móstoles", "Alcorcón", "Boadilla del Monte", "Villaviciosa de Odón"]
-        # self.btnLabels = None # TODO rework
+        self.labels = []
         # self.rbtns = []
         # self.chkbtns = []
         # self.etxt = []
@@ -74,6 +74,22 @@ class TravelAgencyApp:
         # self.lstbox = None
         # self.btn_save = None
         # TODO
+
+        self.title_frame = tkinter.Frame(
+            self.window,
+            width = self.width,
+            height = 100, # TODO img size
+            bg = self._BG
+        )
+        #self.title_frame(
+        self.labels.append(tkinter.Label(
+            self.window,
+            text = "Viajes de Senderismo",
+            font = ("Arial", 30),
+            fg = self._FG,
+            bg = self._BG
+        ))
+        self.labels[-1].pack(anchor = tkinter.NW, side = tkinter.LEFT)
         self._init_imgs()
 
     def _init_imgs(self) -> None:
