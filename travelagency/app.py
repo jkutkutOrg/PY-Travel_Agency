@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/02/28 09:33:30 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/02/28 13:38:51 by Jkutkut            '-----------------'    #
+#    Updated: 2023/02/28 15:52:55 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,9 @@ class TravelAgencyApp:
 
     def _config_window(self):
         self.w.title(self._TITLE)
+        self.w.config(
+            #bg = self._BG
+        )
 
         root_dir = pathlib.Path(__name__).parent.resolve()
         # TODO self.w.iconbitmap(f"{root_dir}/res/img/logo.ico")
@@ -47,8 +50,9 @@ class TravelAgencyApp:
             self.w,
             width = self.width,
             height = self.height,
-            bg = self._BG # TODO window with bg
+            bg = self._BG
         )
+        self._window_frame.pack_propagate(0)
         self.w.geometry(self._GEOMETRY)
         self.w.maxsize(*self._MAX_SIZE)
         self.w.minsize(*self._MIN_SIZE)
@@ -58,37 +62,26 @@ class TravelAgencyApp:
         )
 
     def _init_components(self):
-        RADIO_BTNS = ["Monte Abantos", "La Pedriza", "Las dehesas de Cercedilla", "La Cabrera-Pico de la Miel"]
-        CHK_BTNS = ["Mochila", "Linterna", "GPS", "Mapa", "Prismáticos", "Cantimplora", "Botiquín", "Crema Solar"]
-        EDIT_TEXTS = ["Nombre", "Apellidos", "Dirección", "Teléfono"]
-        CMBBOX_OPTIONS = ["Madrid", "Alcobendas", "San Sebastián de los Reyes", "Algete", "Pozuelo", "Las Rozas", "Majadahonda", "Móstoles", "Alcorcón", "Boadilla del Monte", "Villaviciosa de Odón"]
-        self.btnLabels = None # TODO rework
-        self.rbtns = []
-        self.chkbtns = []
-        self.etxt = []
-        self.cmbbox = None
-        self.lstbox = None
-        self.btn_save = None
+        # RADIO_BTNS = ["Monte Abantos", "La Pedriza", "Las dehesas de Cercedilla", "La Cabrera-Pico de la Miel"]
+        # CHK_BTNS = ["Mochila", "Linterna", "GPS", "Mapa", "Prismáticos", "Cantimplora", "Botiquín", "Crema Solar"]
+        # EDIT_TEXTS = ["Nombre", "Apellidos", "Dirección", "Teléfono"]
+        # CMBBOX_OPTIONS = ["Madrid", "Alcobendas", "San Sebastián de los Reyes", "Algete", "Pozuelo", "Las Rozas", "Majadahonda", "Móstoles", "Alcorcón", "Boadilla del Monte", "Villaviciosa de Odón"]
+        # self.btnLabels = None # TODO rework
+        # self.rbtns = []
+        # self.chkbtns = []
+        # self.etxt = []
+        # self.cmbbox = None
+        # self.lstbox = None
+        # self.btn_save = None
         # TODO
         self._init_imgs()
 
     def _init_imgs(self) -> None:
         size = 100
-        # img = tkinter.PhotoImage(file="res/img/logo.png")
-        # canvas = tkinter.Canvas(
-        #     self.window,
-        #     width = size,
-        #     height = size,
-        #     bg = 'blue'
-        # )
-        # canvas.pack(
-        #     #padx = self.width - size,
-        #     #padx = 0,
-        #     #pady = 0
-        # )
-        # canvas.create_image(0, 0, anchor = tkinter.NW, image = img)
-        print("Imgs TODO")
-
+        self._canvas = tkinter.Canvas(self.window, width = size, height = size, highlightthickness=0)
+        self._img = tkinter.PhotoImage(file="res/img/logo.png")
+        self._canvas.pack(anchor = tkinter.E)
+        self._canvas.create_image(0,0, anchor=tkinter.NW, image = self._img)
 
 
 
