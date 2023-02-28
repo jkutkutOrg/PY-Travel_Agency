@@ -9,47 +9,105 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/02/28 09:33:30 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/02/28 10:00:41 by Jkutkut            '-----------------'    #
+#    Updated: 2023/02/28 13:38:51 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
 import tkinter
+import pathlib
 
 class TravelAgencyApp:
 
     _TITLE = "Agencia de Viajes"
-    _GEOMETRY = "800x800+0+0"
-    _MIN_SIZE = (600, 600)
-    _MAX_SIZE = (800, 800)
+    _WIDTH = 800
+    _HEIGHT = 600
+    #_GEOMETRY = f"{_WIDTH}x{_HEIGHT}+0+0"
+    _GEOMETRY = f"{_WIDTH}x{_HEIGHT}+1500+0"
+    _MIN_SIZE = (_WIDTH, _HEIGHT)
+    _MAX_SIZE = (_WIDTH, _HEIGHT)
+
+    # Style
+    _BG = '#333333'
+    _FG = '#AAAAAA'
+    _WINDOW_PADDING = 10
 
     def __init__(self):
         self._window = tkinter.Tk()
         self._config_window()
         self._init_components()
-        self._place_components()
+        # Debug
+        self.w.bind("<FocusOut>", lambda e : exit())
 
     def _config_window(self):
-        self.window.title(self._TITLE)
-        self.window.geometry(self._GEOMETRY)
-        self.window.maxsize(*self._MAX_SIZE)
-        self.window.minsize(*self._MIN_SIZE)
+        self.w.title(self._TITLE)
+
+        root_dir = pathlib.Path(__name__).parent.resolve()
+        # TODO self.w.iconbitmap(f"{root_dir}/res/img/logo.ico")
+        self._window_frame = tkinter.Frame(
+            self.w,
+            width = self.width,
+            height = self.height,
+            bg = self._BG # TODO window with bg
+        )
+        self.w.geometry(self._GEOMETRY)
+        self.w.maxsize(*self._MAX_SIZE)
+        self.w.minsize(*self._MIN_SIZE)
+        self._window_frame.pack(
+            padx = self._WINDOW_PADDING,
+            pady = self._WINDOW_PADDING
+        )
 
     def _init_components(self):
         RADIO_BTNS = ["Monte Abantos", "La Pedriza", "Las dehesas de Cercedilla", "La Cabrera-Pico de la Miel"]
         CHK_BTNS = ["Mochila", "Linterna", "GPS", "Mapa", "Prismáticos", "Cantimplora", "Botiquín", "Crema Solar"]
         EDIT_TEXTS = ["Nombre", "Apellidos", "Dirección", "Teléfono"]
+        CMBBOX_OPTIONS = ["Madrid", "Alcobendas", "San Sebastián de los Reyes", "Algete", "Pozuelo", "Las Rozas", "Majadahonda", "Móstoles", "Alcorcón", "Boadilla del Monte", "Villaviciosa de Odón"]
+        self.btnLabels = None # TODO rework
         self.rbtns = []
         self.chkbtns = []
         self.etxt = []
+        self.cmbbox = None
+        self.lstbox = None
+        self.btn_save = None
         # TODO
+        self._init_imgs()
 
-    def _place_components(self):
-        pass # TODO
+    def _init_imgs(self) -> None:
+        size = 100
+        # img = tkinter.PhotoImage(file="res/img/logo.png")
+        # canvas = tkinter.Canvas(
+        #     self.window,
+        #     width = size,
+        #     height = size,
+        #     bg = 'blue'
+        # )
+        # canvas.pack(
+        #     #padx = self.width - size,
+        #     #padx = 0,
+        #     #pady = 0
+        # )
+        # canvas.create_image(0, 0, anchor = tkinter.NW, image = img)
+        print("Imgs TODO")
+
+
+
 
     def run(self) -> None:
-        self.window.mainloop()
+        self.w.mainloop()
 
     # GETTERS
     @property
+    def width(self) -> int:
+        return self._WIDTH - 2 * self._WINDOW_PADDING
+    
+    @property
+    def height(self) -> int:
+        return self._HEIGHT - 2 * self._WINDOW_PADDING
+
+    @property
     def window(self):
+        return self._window_frame
+
+    @property
+    def w(self):
         return self._window
