@@ -21,6 +21,7 @@ from travelagency.ui.textfield import TextField
 from travelagency.ui.label import TitleLabel, SubTitleLabel
 from travelagency.ui.radiobutton import Radiobutton
 from travelagency.ui.checkbutton import Checkbutton
+from travelagency.ui.button import Button
 
 class TravelAgencyApp:
 
@@ -258,10 +259,6 @@ class TravelAgencyApp:
             state = "readonly",
             values = CMBBOX_OPTIONS
         )
-        # self._txtf_poblacion = TextField(
-        #     self._data_containers[-1],
-        #     hint = "Población"
-        # )
         self._cmbbox_poblacion.pack(
             side = tkinter.LEFT,
             padx = self._NORMAL_MARGIN
@@ -294,10 +291,8 @@ class TravelAgencyApp:
 
     def _init_db_ui(self) -> None:
         # Btn submit
-        self.btn_submit = tkinter.Button(
+        self.btn_submit = Button(
             self.window,
-            bg = self._BG, # TODO fix
-            fg = self._FG,
             text = "Añadir viaje"
         )
         self.btn_submit.pack(
