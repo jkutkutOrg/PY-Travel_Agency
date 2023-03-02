@@ -29,6 +29,7 @@ class TravelAgencyApp:
     _BG = '#333333'
     _FG = '#AAAAAA'
     _WINDOW_PADDING = 10
+    _NORMAL_MARGIN = 10
 
     def __init__(self):
         self._window = tkinter.Tk()
@@ -61,7 +62,6 @@ class TravelAgencyApp:
         )
 
     def _init_components(self):
-        # RADIO_BTNS = ["Monte Abantos", "La Pedriza", "Las dehesas de Cercedilla", "La Cabrera-Pico de la Miel"]
         # CHK_BTNS = ["Mochila", "Linterna", "GPS", "Mapa", "Prismáticos", "Cantimplora", "Botiquín", "Crema Solar"]
         # EDIT_TEXTS = ["Nombre", "Apellidos", "Dirección", "Teléfono"]
         # CMBBOX_OPTIONS = ["Madrid", "Alcobendas", "San Sebastián de los Reyes", "Algete", "Pozuelo", "Las Rozas", "Majadahonda", "Móstoles", "Alcorcón", "Boadilla del Monte", "Villaviciosa de Odón"]
@@ -74,11 +74,11 @@ class TravelAgencyApp:
         # self.btn_save = None
         # TODO
         self._init_title()
+        self._init_travel_type()
 
     def _init_title(self) -> None:
         self._title_frame = tkinter.Frame(
             self.window,
-            width = self.width,
             bg = self._BG
         )
         self._title_frame.pack(
@@ -109,28 +109,50 @@ class TravelAgencyApp:
         )
         self._canvas.create_image(0,0, anchor=tkinter.NW, image = self._img)
 
-
     def _init_travel_type(self) -> None:
-        self.labels.append(tkinter.Label(
+        self._travel_type_container = tkinter.Frame(
             self.window,
+            bg = self._BG
+        )
+        self._travel_type_container.pack(
+            fill = tkinter.X,
+            pady = self._NORMAL_MARGIN
+        )
+        # Section label
+        self.labels.append(tkinter.Label(
+            self._travel_type_container,
             text = "Añadir viaje:",
             font = ("Arial", 20),
             fg = self._FG,
             bg = self._BG
         ))
         self.labels[-1].pack(
-            # anchor = tkinter.N,
-            side = tkinter.LEFT,
-            padx = 0,
-            #pady = 00, # TODO img size
+            anchor = tkinter.NW
         )
-        # rbtns_value = tkinter.StringVar()
-        # self.rbtns.append(tkinter.Radiobutton(
-        #     self.window,
-        #     text = "Hola",
-        #     variable = rbtns_value
-        # ))
-        # self.rbtns[-1].pack()
+        # Types
+        self._travel_types_container = tkinter.Frame(
+            self._travel_type_container,
+            bg = self._BG
+        )
+        self._travel_types_container.pack(
+            fill = tkinter.X,
+            pady = self._NORMAL_MARGIN
+        )
+        self._rbtns_value = tkinter.StringVar()
+        RADIO_BTNS = ["Monte Abantos", "La Pedriza", "Las dehesas de Cercedilla", "La Cabrera-Pico de la Miel"]
+        for rbtn_label in RADIO_BTNS:
+            self.rbtns.append(tkinter.Radiobutton(
+                self._travel_types_container,
+                bg = self._BG,
+                fg = self._FG,
+                text = rbtn_label,
+                value = rbtn_label,
+                variable = self._rbtns_value
+            ))
+            self.rbtns[-1].pack(
+                side = tkinter.LEFT,
+                padx = self._NORMAL_MARGIN
+            )
 
     def run(self) -> None:
         self.w.mainloop()
@@ -139,7 +161,7 @@ class TravelAgencyApp:
     @property
     def width(self) -> int:
         return self._WIDTH - 2 * self._WINDOW_PADDING
-    
+
     @property
     def height(self) -> int:
         return self._HEIGHT - 2 * self._WINDOW_PADDING
