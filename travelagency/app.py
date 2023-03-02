@@ -9,12 +9,15 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/02/28 09:33:30 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/02/28 17:02:56 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/02 12:34:01 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
 import tkinter
+from tkinter import ttk
 import pathlib
+
+from travelagency.ui.textfield import TextField
 
 class TravelAgencyApp:
 
@@ -35,7 +38,7 @@ class TravelAgencyApp:
         self._window = tkinter.Tk()
         self._config_window()
         self._init_components()
-        # Debug
+        # TODO Debug
         self.w.bind("<FocusOut>", lambda e : exit())
 
     def _config_window(self):
@@ -71,10 +74,15 @@ class TravelAgencyApp:
         # self.cmbbox = None
         # self.lstbox = None
         # self.btn_save = None
-        # TODO
+        # TODO Refactor containers
+        # TODO Refactor style
+        # TODO Rename methods: UImethods, logic...
+        # TODO properties
+        # TODO UI class and logic class
         self._init_title()
         self._init_travel_type()
         self._init_objs()
+        self._init_usr_data()
 
     def _init_title(self) -> None:
         self._title_frame = tkinter.Frame(
@@ -201,6 +209,97 @@ class TravelAgencyApp:
                 side = tkinter.LEFT,
                 padx = self._NORMAL_MARGIN
             )
+
+    def _init_usr_data(self) -> None:
+        self._data_container = tkinter.Frame(
+            self.window,
+            bg = self._BG
+        )
+        self._data_container.pack(
+            fill = tkinter.X,
+            pady = self._NORMAL_MARGIN
+        )
+        # Section label
+        self.labels.append(tkinter.Label(
+            self._data_container,
+            text = "Datos usuario:",
+            font = ("Arial", 20),
+            fg = self._FG,
+            bg = self._BG
+        ))
+        self.labels[-1].pack(
+            anchor = tkinter.NW
+        )
+        # Name, surname, población
+        self._data_containers = []
+        self._data_containers.append(tkinter.Frame(
+            self._data_container,
+            bg = self._BG
+        ))
+        self._data_containers[-1].pack(
+            fill = tkinter.X,
+            pady = self._NORMAL_MARGIN
+        )
+        self._txtf_name = TextField(
+            self._data_containers[-1],
+            hint = "Nombre"
+        )
+        self._txtf_name.pack(
+            side = tkinter.LEFT,
+            padx = self._NORMAL_MARGIN
+        )
+        self._txtf_surname = TextField(
+            self._data_containers[-1],
+            hint = "Apellidos"
+        )
+        self._txtf_surname.pack(
+            side = tkinter.LEFT,
+            padx = self._NORMAL_MARGIN
+        )
+        self._txtf_poblacion = TextField(
+            self._data_containers[-1],
+            hint = "Población"
+        )
+        self._txtf_poblacion.pack(
+            side = tkinter.LEFT,
+            padx = self._NORMAL_MARGIN
+        )
+        # Address and phone
+        self._data_containers.append(tkinter.Frame(
+            self._data_container,
+            bg = self._BG
+        ))
+        self._data_containers[-1].pack(
+            fill = tkinter.X,
+            pady = self._NORMAL_MARGIN
+        )
+        self._txtf_address = TextField(
+            self._data_containers[-1],
+            hint = "Dirección"
+        )
+        self._txtf_address.pack(
+            side = tkinter.LEFT,
+            padx = self._NORMAL_MARGIN
+        )
+        self._txtf_phone = TextField(
+            self._data_containers[-1],
+            hint = "Teléfono"
+        )
+        self._txtf_phone.pack(
+            side = tkinter.LEFT,
+            padx = self._NORMAL_MARGIN
+        )
+        # Btn submit
+        self._btn_submit = tkinter.Button(
+            self.window,
+            bg = self._BG, # TODO fix
+            fg = self._FG,
+            text = "Añadir viaje"
+        )
+        self._btn_submit.pack(
+            fill = tkinter.X,
+        )
+
 
     def run(self) -> None:
         self.w.mainloop()
