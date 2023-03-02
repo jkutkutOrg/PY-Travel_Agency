@@ -18,6 +18,7 @@ from tkinter import ttk
 import pathlib
 
 from travelagency.ui.textfield import TextField
+from travelagency.ui.label import TitleLabel, SubTitleLabel
 
 class TravelAgencyApp:
 
@@ -28,7 +29,7 @@ class TravelAgencyApp:
     _MIN_SIZE = (_WIDTH, _HEIGHT)
     _MAX_SIZE = (_WIDTH, _HEIGHT)
 
-    # Style
+    # TODO remove Style
     _BG = '#333333'
     _FG = '#AAAAAA'
     _WINDOW_PADDING = 10
@@ -39,7 +40,7 @@ class TravelAgencyApp:
         self._config_window()
         self._init_components()
         # TODO Debug
-        # self.w.bind("<FocusOut>", lambda e : exit())
+        self.w.bind("<FocusOut>", lambda e : exit())
 
     def _config_window(self):
         self.w.title(self._TITLE)
@@ -92,14 +93,10 @@ class TravelAgencyApp:
             fill = tkinter.X
         )
         # Title label
-        self.labels.append(tkinter.Label(
+        TitleLabel(
             self._title_frame,
-            text = "Viajes",
-            font = ("Arial", 30),
-            fg = self._FG,
-            bg = self._BG
-        ))
-        self.labels[-1].pack(
+            "Viajes"
+        ).pack(
             side = tkinter.LEFT
         )
         # Logo
@@ -126,14 +123,10 @@ class TravelAgencyApp:
             pady = self._NORMAL_MARGIN
         )
         # Section label
-        self.labels.append(tkinter.Label(
+        SubTitleLabel(
             self._travel_type_container,
-            text = "Añadir viaje:",
-            font = ("Arial", 20),
-            fg = self._FG,
-            bg = self._BG
-        ))
-        self.labels[-1].pack(
+            text = "Añadir viaje:"
+        ).pack(
             anchor = tkinter.NW
         )
         # Types
@@ -171,14 +164,10 @@ class TravelAgencyApp:
             pady = self._NORMAL_MARGIN
         )
         # Section label
-        self.labels.append(tkinter.Label(
+        SubTitleLabel(
             self._obj_container,
-            text = "Accesorios:",
-            font = ("Arial", 20),
-            fg = self._FG,
-            bg = self._BG
-        ))
-        self.labels[-1].pack(
+            text = "Accesorios:"
+        ).pack(
             anchor = tkinter.NW
         )
         # Types
@@ -219,14 +208,10 @@ class TravelAgencyApp:
             pady = self._NORMAL_MARGIN
         )
         # Section label
-        self.labels.append(tkinter.Label(
+        SubTitleLabel(
             self._data_container,
-            text = "Datos usuario:",
-            font = ("Arial", 20),
-            fg = self._FG,
-            bg = self._BG
-        ))
-        self.labels[-1].pack(
+            text = "Datos usuario:"
+        ).pack(
             anchor = tkinter.NW
         )
         # Name, surname, población
