@@ -9,12 +9,11 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/02/28 09:31:08 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/02/28 09:34:26 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/02 16:56:41 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
 from travelagency.app import TravelAgencyApp
-
 
 if __name__ == '__main__':
     app = TravelAgencyApp()
