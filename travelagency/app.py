@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/02/28 09:33:30 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/02/28 16:16:54 by Jkutkut            '-----------------'    #
+#    Updated: 2023/02/28 17:02:56 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ class TravelAgencyApp:
         # EDIT_TEXTS = ["Nombre", "Apellidos", "Dirección", "Teléfono"]
         # CMBBOX_OPTIONS = ["Madrid", "Alcobendas", "San Sebastián de los Reyes", "Algete", "Pozuelo", "Las Rozas", "Majadahonda", "Móstoles", "Alcorcón", "Boadilla del Monte", "Villaviciosa de Odón"]
         self.labels = []
-        # self.rbtns = []
+        self.rbtns = []
         # self.chkbtns = []
         # self.etxt = []
         # self.cmbbox = None
@@ -81,16 +81,37 @@ class TravelAgencyApp:
             height = 100, # TODO img size
             bg = self._BG
         )
-        #self.title_frame(
         self.labels.append(tkinter.Label(
             self.window,
-            text = "Viajes de Senderismo",
+            text = "Viajes",
             font = ("Arial", 30),
             fg = self._FG,
             bg = self._BG
         ))
-        self.labels[-1].pack(anchor = tkinter.NW, side = tkinter.LEFT)
+        self.labels[-1].pack(anchor = tkinter.N, side = tkinter.LEFT)
         self._init_imgs()
+
+        self.labels.append(tkinter.Label(
+            self.window,
+            text = "Añadir viaje:",
+            font = ("Arial", 20),
+            fg = self._FG,
+            bg = self._BG
+        ))
+        self.labels[-1].pack(
+            # anchor = tkinter.N,
+            side = tkinter.LEFT,
+            padx = 0,
+            #pady = 00, # TODO img size
+        )
+
+        # rbtns_value = tkinter.StringVar()
+        # self.rbtns.append(tkinter.Radiobutton(
+        #     self.window,
+        #     text = "Hola",
+        #     variable = rbtns_value
+        # ))
+        # self.rbtns[-1].pack()
 
     def _init_imgs(self) -> None:
         size = 100
