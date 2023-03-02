@@ -19,6 +19,7 @@ import pathlib
 
 from travelagency.ui.textfield import TextField
 from travelagency.ui.label import TitleLabel, SubTitleLabel
+from travelagency.ui.radiobutton import Radiobutton
 
 class TravelAgencyApp:
 
@@ -66,7 +67,6 @@ class TravelAgencyApp:
         )
 
     def _init_components(self):
-        self.labels = []
         self.rbtns = []
         self.chkbtns = []
         # self.etxt = [] # TODO use
@@ -141,15 +141,12 @@ class TravelAgencyApp:
         self._rbtns_value = tkinter.StringVar()
         RADIO_BTNS = ["Monte Abantos", "La Pedriza", "Las dehesas de Cercedilla", "La Cabrera-Pico de la Miel"]
         for rbtn_label in RADIO_BTNS:
-            self.rbtns.append(tkinter.Radiobutton(
+            Radiobutton(
                 self._travel_types_container,
-                bg = self._BG,
-                fg = self._FG,
                 text = rbtn_label,
                 value = rbtn_label,
                 variable = self._rbtns_value
-            ))
-            self.rbtns[-1].pack(
+            ).pack(
                 side = tkinter.LEFT,
                 padx = self._NORMAL_MARGIN
             )
