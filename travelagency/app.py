@@ -23,6 +23,8 @@ from travelagency.ui.radiobutton import Radiobutton
 from travelagency.ui.checkbutton import Checkbutton
 from travelagency.ui.button import Button
 
+from travelagency.style.style import TravelAgencyStyle
+
 class TravelAgencyApp:
 
     _TITLE = "Agencia de Viajes"
@@ -43,14 +45,14 @@ class TravelAgencyApp:
         self._config_window()
         self._init_components()
         # TODO Debug
-        self.w.bind("<FocusOut>", lambda e : exit())
+        # self.w.bind("<FocusOut>", lambda e : exit())
 
     def _config_window(self):
         self.w.title(self._TITLE)
         self.w.config(
            bg = self._BG
         )
-
+        TravelAgencyStyle.initialize()
         root_dir = pathlib.Path(__name__).parent.resolve()
         # TODO self.w.iconbitmap(f"{root_dir}/res/img/logo.ico")
         self._window_frame = tkinter.Frame(
@@ -238,22 +240,6 @@ class TravelAgencyApp:
             padx = self._NORMAL_MARGIN
         )
         CMBBOX_OPTIONS = ["Madrid", "Alcobendas", "San Sebastián de los Reyes", "Algete", "Pozuelo", "Las Rozas", "Majadahonda", "Móstoles", "Alcorcón", "Boadilla del Monte", "Villaviciosa de Odón"]
-        style = ttk.Style()
-        style.theme_create(
-            'customstyle',
-            parent = 'alt',
-            settings = {
-                'TCombobox': {
-                    'configure': {
-                        'selectbackground': self._BG,
-                        'fieldbackground': self._BG,
-                        'background': self._BG,
-                        # 'foreground': self._FG # TODO
-                    }
-                }
-            }
-        )
-        style.theme_use('customstyle')
         self._cmbbox_poblacion = ttk.Combobox(
             self._data_containers[-1],
             state = "readonly",
