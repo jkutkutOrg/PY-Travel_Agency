@@ -21,8 +21,7 @@ class TravelAgencyApp:
     _TITLE = "Agencia de Viajes"
     _WIDTH = 800
     _HEIGHT = 600
-    #_GEOMETRY = f"{_WIDTH}x{_HEIGHT}+0+0"
-    _GEOMETRY = f"{_WIDTH}x{_HEIGHT}+1500+0"
+    _GEOMETRY = f"{_WIDTH}x{_HEIGHT}+0+0"
     _MIN_SIZE = (_WIDTH, _HEIGHT)
     _MAX_SIZE = (_WIDTH, _HEIGHT)
 
@@ -74,23 +73,44 @@ class TravelAgencyApp:
         # self.lstbox = None
         # self.btn_save = None
         # TODO
+        self._init_title()
 
-        self.title_frame = tkinter.Frame(
+    def _init_title(self) -> None:
+        self._title_frame = tkinter.Frame(
             self.window,
             width = self.width,
-            height = 100, # TODO img size
             bg = self._BG
         )
+        self._title_frame.pack(
+            fill = tkinter.X
+        )
+        # Title label
         self.labels.append(tkinter.Label(
-            self.window,
+            self._title_frame,
             text = "Viajes",
             font = ("Arial", 30),
             fg = self._FG,
             bg = self._BG
         ))
-        self.labels[-1].pack(anchor = tkinter.N, side = tkinter.LEFT)
-        self._init_imgs()
+        self.labels[-1].pack(
+            side = tkinter.LEFT
+        )
+        # Logo
+        size = 100
+        self._canvas = tkinter.Canvas(
+            self._title_frame,
+            width = size,
+            height = size,
+            highlightthickness=0
+        )
+        self._img = tkinter.PhotoImage(file="res/img/logo.png")
+        self._canvas.pack(
+            side = tkinter.RIGHT
+        )
+        self._canvas.create_image(0,0, anchor=tkinter.NW, image = self._img)
 
+
+    def _init_travel_type(self) -> None:
         self.labels.append(tkinter.Label(
             self.window,
             text = "Añadir viaje:",
@@ -104,7 +124,6 @@ class TravelAgencyApp:
             padx = 0,
             #pady = 00, # TODO img size
         )
-
         # rbtns_value = tkinter.StringVar()
         # self.rbtns.append(tkinter.Radiobutton(
         #     self.window,
@@ -112,15 +131,6 @@ class TravelAgencyApp:
         #     variable = rbtns_value
         # ))
         # self.rbtns[-1].pack()
-
-    def _init_imgs(self) -> None:
-        size = 100
-        self._canvas = tkinter.Canvas(self.window, width = size, height = size, highlightthickness=0)
-        self._img = tkinter.PhotoImage(file="res/img/logo.png")
-        self._canvas.pack(anchor = tkinter.E)
-        self._canvas.create_image(0,0, anchor=tkinter.NW, image = self._img)
-
-
 
     def run(self) -> None:
         self.w.mainloop()
