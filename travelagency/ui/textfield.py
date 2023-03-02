@@ -1,9 +1,17 @@
 import tkinter
 from tkinter import ttk
 
+from travelagency.style.style import TravelAgencyStyle as STYLE
+
 class TextField(tkinter.Entry):
     def __init__(self, window, hint, hint_color='grey'):
-        super().__init__(window)
+        super().__init__(
+            window,
+            bg = STYLE.BG,
+            fg = STYLE.FG,
+            highlightcolor = STYLE.BG,
+            highlightbackground = STYLE.BG
+        )
 
         self.hint = hint
         self.hint_color = hint_color
