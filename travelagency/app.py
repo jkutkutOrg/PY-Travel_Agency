@@ -20,6 +20,7 @@ import pathlib
 from travelagency.ui.textfield import TextField
 from travelagency.ui.label import TitleLabel, SubTitleLabel
 from travelagency.ui.radiobutton import Radiobutton
+from travelagency.ui.checkbutton import Checkbutton
 
 class TravelAgencyApp:
 
@@ -179,21 +180,19 @@ class TravelAgencyApp:
         CHK_BTNS = ["Mochila", "Linterna", "GPS", "Mapa", "Prismáticos", "Cantimplora", "Botiquín", "Crema Solar"]
         for chkbtn_label in CHK_BTNS:
             v = tkinter.BooleanVar()
-            e = tkinter.Checkbutton(
+            e = Checkbutton(
                 self._objs_container,
-                bg = self._BG,
-                fg = self._FG,
                 text = chkbtn_label,
                 variable = v
+            )
+            e.pack(
+                side = tkinter.LEFT,
+                padx = self._NORMAL_MARGIN
             )
             self.chkbtns.append({
                 "v": v,
                 "e": e
             })
-            e.pack(
-                side = tkinter.LEFT,
-                padx = self._NORMAL_MARGIN
-            )
 
     def _init_usr_data(self) -> None:
         self._data_container = tkinter.Frame(
