@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/02/28 09:33:30 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/02 12:34:01 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/02 12:52:32 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ class TravelAgencyApp:
     def _config_window(self):
         self.w.title(self._TITLE)
         self.w.config(
-            #bg = self._BG
+           bg = self._BG
         )
 
         root_dir = pathlib.Path(__name__).parent.resolve()
@@ -70,10 +70,10 @@ class TravelAgencyApp:
         self.labels = []
         self.rbtns = []
         self.chkbtns = []
-        # self.etxt = []
-        # self.cmbbox = None
-        # self.lstbox = None
-        # self.btn_save = None
+        # self.etxt = [] # TODO use
+        # self.cmbbox = None # TODO add
+        self.btn_submit = None
+        self.lstbox = None
         # TODO Refactor containers
         # TODO Refactor style
         # TODO Rename methods: UImethods, logic...
@@ -83,6 +83,7 @@ class TravelAgencyApp:
         self._init_travel_type()
         self._init_objs()
         self._init_usr_data()
+        self._init_db_ui()
 
     def _init_title(self) -> None:
         self._title_frame = tkinter.Frame(
@@ -289,15 +290,27 @@ class TravelAgencyApp:
             side = tkinter.LEFT,
             padx = self._NORMAL_MARGIN
         )
+
+    def _init_db_ui(self) -> None:
         # Btn submit
-        self._btn_submit = tkinter.Button(
+        self.btn_submit = tkinter.Button(
             self.window,
             bg = self._BG, # TODO fix
             fg = self._FG,
             text = "Añadir viaje"
         )
-        self._btn_submit.pack(
+        self.btn_submit.pack(
             fill = tkinter.X,
+            padx = self._NORMAL_MARGIN
+        )
+        self.lstbox = tkinter.Listbox(
+            self.window,
+            bg = 'grey' # TODO
+        )
+        self.lstbox.pack(
+            fill = tkinter.BOTH,
+            pady = self._NORMAL_MARGIN,
+            padx = self._NORMAL_MARGIN
         )
 
 
