@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/02/28 09:33:30 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/02 12:52:32 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/02 14:54:15 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ class TravelAgencyApp:
         self._config_window()
         self._init_components()
         # TODO Debug
-        self.w.bind("<FocusOut>", lambda e : exit())
+        # self.w.bind("<FocusOut>", lambda e : exit())
 
     def _config_window(self):
         self.w.title(self._TITLE)
@@ -65,8 +65,6 @@ class TravelAgencyApp:
         )
 
     def _init_components(self):
-        # EDIT_TEXTS = ["Nombre", "Apellidos", "Dirección", "Teléfono"]
-        # CMBBOX_OPTIONS = ["Madrid", "Alcobendas", "San Sebastián de los Reyes", "Algete", "Pozuelo", "Las Rozas", "Majadahonda", "Móstoles", "Alcorcón", "Boadilla del Monte", "Villaviciosa de Odón"]
         self.labels = []
         self.rbtns = []
         self.chkbtns = []
@@ -257,11 +255,33 @@ class TravelAgencyApp:
             side = tkinter.LEFT,
             padx = self._NORMAL_MARGIN
         )
-        self._txtf_poblacion = TextField(
-            self._data_containers[-1],
-            hint = "Población"
+        CMBBOX_OPTIONS = ["Madrid", "Alcobendas", "San Sebastián de los Reyes", "Algete", "Pozuelo", "Las Rozas", "Majadahonda", "Móstoles", "Alcorcón", "Boadilla del Monte", "Villaviciosa de Odón"]
+        style = ttk.Style()
+        style.theme_create(
+            'customstyle',
+            parent = 'alt',
+            settings = {
+                'TCombobox': {
+                    'configure': {
+                        'selectbackground': self._BG,
+                        'fieldbackground': self._BG,
+                        'background': self._BG,
+                        # 'foreground': self._FG # TODO
+                    }
+                }
+            }
         )
-        self._txtf_poblacion.pack(
+        style.theme_use('customstyle')
+        self._cmbbox_poblacion = ttk.Combobox(
+            self._data_containers[-1],
+            state = "readonly",
+            values = CMBBOX_OPTIONS
+        )
+        # self._txtf_poblacion = TextField(
+        #     self._data_containers[-1],
+        #     hint = "Población"
+        # )
+        self._cmbbox_poblacion.pack(
             side = tkinter.LEFT,
             padx = self._NORMAL_MARGIN
         )
