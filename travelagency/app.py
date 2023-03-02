@@ -19,7 +19,7 @@ import pathlib
 class TravelAgencyApp:
 
     _TITLE = "Agencia de Viajes"
-    _WIDTH = 800
+    _WIDTH = 850
     _HEIGHT = 600
     _GEOMETRY = f"{_WIDTH}x{_HEIGHT}+0+0"
     _MIN_SIZE = (_WIDTH, _HEIGHT)
@@ -62,12 +62,11 @@ class TravelAgencyApp:
         )
 
     def _init_components(self):
-        # CHK_BTNS = ["Mochila", "Linterna", "GPS", "Mapa", "Prismáticos", "Cantimplora", "Botiquín", "Crema Solar"]
         # EDIT_TEXTS = ["Nombre", "Apellidos", "Dirección", "Teléfono"]
         # CMBBOX_OPTIONS = ["Madrid", "Alcobendas", "San Sebastián de los Reyes", "Algete", "Pozuelo", "Las Rozas", "Majadahonda", "Móstoles", "Alcorcón", "Boadilla del Monte", "Villaviciosa de Odón"]
         self.labels = []
         self.rbtns = []
-        # self.chkbtns = []
+        self.chkbtns = []
         # self.etxt = []
         # self.cmbbox = None
         # self.lstbox = None
@@ -75,6 +74,7 @@ class TravelAgencyApp:
         # TODO
         self._init_title()
         self._init_travel_type()
+        self._init_objs()
 
     def _init_title(self) -> None:
         self._title_frame = tkinter.Frame(
@@ -150,6 +150,54 @@ class TravelAgencyApp:
                 variable = self._rbtns_value
             ))
             self.rbtns[-1].pack(
+                side = tkinter.LEFT,
+                padx = self._NORMAL_MARGIN
+            )
+
+    def _init_objs(self) -> None:
+        self._obj_container = tkinter.Frame(
+            self.window,
+            bg = self._BG
+        )
+        self._obj_container.pack(
+            fill = tkinter.X,
+            pady = self._NORMAL_MARGIN
+        )
+        # Section label
+        self.labels.append(tkinter.Label(
+            self._obj_container,
+            text = "Accesorios:",
+            font = ("Arial", 20),
+            fg = self._FG,
+            bg = self._BG
+        ))
+        self.labels[-1].pack(
+            anchor = tkinter.NW
+        )
+        # Types
+        self._objs_container = tkinter.Frame(
+            self._obj_container,
+            bg = self._BG
+        )
+        self._objs_container.pack(
+            fill = tkinter.X,
+            pady = self._NORMAL_MARGIN
+        )
+        CHK_BTNS = ["Mochila", "Linterna", "GPS", "Mapa", "Prismáticos", "Cantimplora", "Botiquín", "Crema Solar"]
+        for chkbtn_label in CHK_BTNS:
+            v = tkinter.BooleanVar()
+            e = tkinter.Checkbutton(
+                self._objs_container,
+                bg = self._BG,
+                fg = self._FG,
+                text = chkbtn_label,
+                variable = v
+            )
+            self.chkbtns.append({
+                "v": v,
+                "e": e
+            })
+            e.pack(
                 side = tkinter.LEFT,
                 padx = self._NORMAL_MARGIN
             )
