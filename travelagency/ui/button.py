@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/02 14:11:45 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/02 14:15:52 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/02 16:52:59 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,6 @@ class Button(tkinter.Button):
         super().__init__(
             window,
             text = text,
-            highlightbackground = STYLE.BG, # TODO fix
+            highlightbackground = STYLE.BG,
             highlightcolor = STYLE.FG,
         )
