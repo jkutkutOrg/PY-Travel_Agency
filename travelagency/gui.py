@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/02/28 09:33:30 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/03 15:18:25 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 15:58:42 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +41,6 @@ class TravelAgencyGUI:
         self._window = tkinter.Tk()
         self._config_window()
         self._init_components()
-        # TODO Debug
-        # self.w.bind("<FocusOut>", lambda e : exit())
 
     def _config_window(self):
         self.w.title(self._TITLE)
@@ -51,7 +49,7 @@ class TravelAgencyGUI:
         )
         STYLE.initialize()
         root_dir = pathlib.Path(__name__).parent.resolve()
-        # TODO self.w.iconbitmap(f"{root_dir}/res/img/logo.ico")
+        self.w.iconphoto(True, tkinter.PhotoImage(file="res/img/logo.png"))
         self._window_frame = tkinter.Frame(
             self.w,
             width = self.width,
@@ -69,8 +67,6 @@ class TravelAgencyGUI:
 
     def _init_components(self):
         self._chkbtns = []
-        # TODO Rename methods: UImethods, logic...
-        # TODO properties
         self._init_title()
         self._init_travel_type()
         self._init_objs()
