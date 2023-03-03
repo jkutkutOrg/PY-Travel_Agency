@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/02 16:53:41 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/02 16:53:44 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 09:21:13 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,3 +49,7 @@ class TextField(tkinter.Entry):
     def foc_out(self, *args):
         if not self.get():
             self._put_hint()
+
+    def get(self) -> str:
+        return super().get() if self['fg'] != self.hint_color else ""
+
