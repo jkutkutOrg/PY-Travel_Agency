@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/02/28 09:33:30 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/03 09:02:19 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 09:41:58 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -268,11 +268,11 @@ class TravelAgencyGUI:
             fill = tkinter.X,
             padx = STYLE.NORMAL_MARGIN
         )
-        self.lstbox = tkinter.Listbox(
+        self._lstbox = tkinter.Listbox(
             self.window,
             bg = 'grey' # TODO
         )
-        self.lstbox.pack(
+        self._lstbox.pack(
             fill = tkinter.BOTH,
             pady = STYLE.NORMAL_MARGIN,
             padx = STYLE.NORMAL_MARGIN
@@ -331,3 +331,7 @@ class TravelAgencyGUI:
     @property
     def travel_phone(self):
         return self._txtf_phone.get()
+
+    # SETTERS
+    def add(self, e: str) -> None:
+        self._lstbox.insert(tkinter.END, e)
