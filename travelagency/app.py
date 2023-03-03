@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/02 16:56:06 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/03 10:08:44 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 10:20:53 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,8 +59,9 @@ class TravelAgencyApp:
         print(items_str)
         print(usr_data)
         name = f"{usr_data[0][1]} {usr_data[1][1]}"
-        result = f"{name} - {traveltype}: {items_str}"
-
+        phone = usr_data[3][1]
+        addr = f"{usr_data[2][1]} {usr_data[4][1]}"
+        result = f"{name} - {traveltype}: {items_str} -- Datos: {phone}, {addr}"
         return result
 
     def run(self):
