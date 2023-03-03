@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/02/28 09:33:30 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/03 10:10:35 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 10:46:32 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ from travelagency.ui.label import TitleLabel, SubTitleLabel
 from travelagency.ui.radiobutton import Radiobutton
 from travelagency.ui.checkbutton import Checkbutton
 from travelagency.ui.button import Button
+from travelagency.ui.listbox import Listbox
 
 from travelagency.style.style import TravelAgencyStyle as STYLE
 
@@ -269,9 +270,8 @@ class TravelAgencyGUI:
             fill = tkinter.X,
             padx = STYLE.NORMAL_MARGIN
         )
-        self._lstbox = tkinter.Listbox(
-            self.window,
-            bg = 'grey' # TODO
+        self._lstbox = Listbox(
+            self.window
         )
         self._lstbox.pack(
             fill = tkinter.BOTH,

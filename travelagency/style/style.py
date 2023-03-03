@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/02 16:52:01 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/02 16:52:02 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 10:47:47 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ from tkinter import ttk
 
 class TravelAgencyStyle:
     BG = '#333333'
+    LST_BG = 'grey'
     FG = '#AAAAAA'
     WINDOW_PADDING = 10
     NORMAL_MARGIN = 10
