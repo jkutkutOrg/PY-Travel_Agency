@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/02 14:11:45 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/02 16:53:37 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 11:44:12 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,5 +25,6 @@ class Radiobutton(tkinter.Radiobutton):
             value = value,
             variable = variable,
             bg = STYLE.BG,
-            fg = STYLE.FG
+            fg = STYLE.FG,
+            highlightthickness = 0
         )

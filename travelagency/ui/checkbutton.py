@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/02 14:11:45 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/02 16:53:07 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 11:43:51 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,5 +24,6 @@ class Checkbutton(tkinter.Checkbutton):
             text = text,
             variable = variable,
             bg = STYLE.BG,
-            fg = STYLE.FG
+            fg = STYLE.FG,
+            highlightthickness = 0
         )
