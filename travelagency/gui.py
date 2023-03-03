@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/02/28 09:33:30 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/03 09:51:35 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 10:10:35 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -232,6 +232,7 @@ class TravelAgencyGUI:
             side = tkinter.LEFT,
             padx = STYLE.NORMAL_MARGIN
         )
+        self._cmbbox_poblacion.current(0)
         # Address and phone
         self._data_containers.append(tkinter.Frame(
             self._data_container,
@@ -300,13 +301,12 @@ class TravelAgencyGUI:
         return self._window
 
     # Form data
-    # TODO treat data: trim
     @property
-    def travel_type(self):
+    def travel_type(self) -> str:
         return self._rbtns_value.get()
 
     @property
-    def travel_items(self):
+    def travel_items(self) -> list:
         items = []
         for i in range(len(self._CHK_BTNS)):
             if self._chkbtns[i].get():
@@ -314,25 +314,33 @@ class TravelAgencyGUI:
         return items
 
     @property
-    def travel_name(self):
-        return self._txtf_name.get()
+    def travel_name(self) -> str:
+        return self._txtf_name.get().strip()
 
     @property
-    def travel_surname(self):
-        return self._txtf_surname.get()
+    def travel_surname(self) -> str:
+        return self._txtf_surname.get().strip()
 
     @property
-    def travel_poblacion(self):
+    def travel_poblacion(self) -> str:
         return self._cmbbox_poblacion.get()
 
     @property
-    def travel_address(self):
-        return self._txtf_address.get()
+    def travel_address(self) -> str:
+        return self._txtf_address.get().strip()
 
     @property
-    def travel_phone(self):
-        return self._txtf_phone.get()
+    def travel_phone(self) -> str:
+        return self._txtf_phone.get().strip()
 
     # SETTERS
     def add(self, e: str) -> None:
         self._lstbox.insert(tkinter.END, e)
+
+    def reset_form(self) -> None:
+        # Keep the radiobtns and chkbtns to allow fast fill of another user
+        self._cmbbox_poblacion.current(0)
+        self._txtf_name.delete(0, tkinter.END)
+        self._txtf_surname.delete(0, tkinter.END)
+        self._txtf_address.delete(0, tkinter.END)
+        self._txtf_phone.delete(0, tkinter.END)

@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/02 16:56:06 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/03 09:53:02 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 10:08:44 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,8 @@ class TravelAgencyApp:
             return
         items = self._gui.travel_items
         usr_data = [
-            ("nombre", self._gui.travel_name, r'^[\w ]$'),
-            ("apellidos", self._gui.travel_surname, r'^[\w ]$'),
+            ("nombre", self._gui.travel_name, r'^[\w ]+$'),
+            ("apellidos", self._gui.travel_surname, r'^[\w ]+$'),
             ("dirección", self._gui.travel_address, None),
             ("teléfono", self._gui.travel_phone, r'^(\+\d{2,3})? ?\d{3} ?(\d{3} ?\d{3}|\d{2} ?\d{2} ?\d{2})$'),
             ("población", self._gui.travel_poblacion, None),
@@ -51,7 +51,7 @@ class TravelAgencyApp:
                 usr_data
             )
         )
-        # self._gui.reset_form()
+        self._gui.reset_form()
 
     def _format(self, traveltype: str, items: list, usr_data: dict) -> str:
         print(traveltype)
