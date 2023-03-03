@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/02/28 09:33:30 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/03 09:41:58 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 09:51:35 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -300,6 +300,7 @@ class TravelAgencyGUI:
         return self._window
 
     # Form data
+    # TODO treat data: trim
     @property
     def travel_type(self):
         return self._rbtns_value.get()

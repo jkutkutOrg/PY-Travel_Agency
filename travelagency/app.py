@@ -9,10 +9,11 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/02 16:56:06 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/03 09:46:26 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 09:53:02 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
+import re
 from travelagency.gui import TravelAgencyGUI
 
 class TravelAgencyApp:
@@ -30,17 +31,17 @@ class TravelAgencyApp:
             return
         items = self._gui.travel_items
         usr_data = [
-            ("nombre", self._gui.travel_name, None),
-            ("apellidos", self._gui.travel_surname, None),
+            ("nombre", self._gui.travel_name, r'^[\w ]$'),
+            ("apellidos", self._gui.travel_surname, r'^[\w ]$'),
             ("dirección", self._gui.travel_address, None),
-            ("teléfono", self._gui.travel_phone, None),
+            ("teléfono", self._gui.travel_phone, r'^(\+\d{2,3})? ?\d{3} ?(\d{3} ?\d{3}|\d{2} ?\d{2} ?\d{2})$'),
             ("población", self._gui.travel_poblacion, None),
         ]
         for key, value, regex in usr_data:
             if value == '':
                 print(f"Invalid {key}")
                 return
-            elif regex is not None and not regex.match(value):
+            elif regex is not None and not re.match(regex, value):
                 print(f"Invalid regex of {key}")
                 return
         self._gui.add(
