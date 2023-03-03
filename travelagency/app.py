@@ -9,11 +9,12 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/02 16:56:06 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/03 15:19:46 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 15:39:50 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
 import re
+from tkinter import messagebox
 from travelagency.gui import TravelAgencyGUI
 
 class TravelAgencyApp:
@@ -27,22 +28,31 @@ class TravelAgencyApp:
     def _submmit(self):
         traveltype = self._gui.travel_type
         if traveltype == '':
-            print("Invalid traveltype")
+            self.error(
+                "Tipo de viaje inválido.",
+                "Selecciona algún viaje."
+            )
             return
         items = self._gui.travel_items
         usr_data = [
-            ("nombre", self._gui.travel_name, r'^[\w ]+$'),
-            ("apellidos", self._gui.travel_surname, r'^[\w ]+$'),
+            ("nombre", self._gui.travel_name, r'^[A-Za-z ]+$'),
+            ("apellidos", self._gui.travel_surname, r'^[A-Za-z ]+$'),
             ("dirección", self._gui.travel_address, None),
             ("teléfono", self._gui.travel_phone, r'^(\+\d{2,3})? ?\d{3} ?(\d{3} ?\d{3}|\d{2} ?\d{2} ?\d{2})$'),
             ("población", self._gui.travel_poblacion, None),
         ]
         for key, value, regex in usr_data:
             if value == '':
-                print(f"Invalid {key}")
+                self.error(
+                    f"Error en {key}",
+                    f"El campo '{key}' no puede estar vacío."
+                )
                 return
             elif regex is not None and not re.match(regex, value):
-                print(f"Invalid regex of {key}")
+                self.error(
+                    f"Error en {key}",
+                    f"El campo '{key}' no es válido."
+                )
                 return
         self._gui.add(
             self._format(
@@ -63,3 +73,6 @@ class TravelAgencyApp:
 
     def run(self):
         self._gui.run()
+
+    def error(self, title, msg) -> None:
+        messagebox.showerror(title = title, message = msg)
