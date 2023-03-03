@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/02 16:53:41 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/03 09:21:13 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 15:17:47 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,3 +53,6 @@ class TextField(tkinter.Entry):
     def get(self) -> str:
         return super().get() if self['fg'] != self.hint_color else ""
 
+    def reset(self) -> None:
+        self.delete(0, tkinter.END)
+        self._put_hint()

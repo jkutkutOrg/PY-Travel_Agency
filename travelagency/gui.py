@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/02/28 09:33:30 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/03 11:51:49 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 15:18:25 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -341,7 +341,7 @@ class TravelAgencyGUI:
     def reset_form(self) -> None:
         # Keep the radiobtns and chkbtns to allow fast fill of another user
         self._cmbbox_poblacion.current(0)
-        self._txtf_name.delete(0, tkinter.END)
-        self._txtf_surname.delete(0, tkinter.END)
-        self._txtf_address.delete(0, tkinter.END)
-        self._txtf_phone.delete(0, tkinter.END)
+        self._txtf_name.reset()
+        self._txtf_surname.reset()
+        self._txtf_address.reset()
+        self._txtf_phone.reset()

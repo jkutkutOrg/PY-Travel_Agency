@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/02 16:56:06 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/03 10:20:53 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 15:19:46 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,10 +54,7 @@ class TravelAgencyApp:
         self._gui.reset_form()
 
     def _format(self, traveltype: str, items: list, usr_data: dict) -> str:
-        print(traveltype)
         items_str = ", ".join(items)
-        print(items_str)
-        print(usr_data)
         name = f"{usr_data[0][1]} {usr_data[1][1]}"
         phone = usr_data[3][1]
         addr = f"{usr_data[2][1]} {usr_data[4][1]}"
