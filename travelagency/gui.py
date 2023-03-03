@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/02/28 09:33:30 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/02 17:07:44 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 09:02:19 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ from travelagency.ui.button import Button
 from travelagency.style.style import TravelAgencyStyle as STYLE
 
 class TravelAgencyGUI:
+
+    _CHK_BTNS = ["Mochila", "Linterna", "GPS", "Mapa", "Prismáticos", "Cantimplora", "Botiquín", "Crema Solar"]
 
     _TITLE = "Agencia de Viajes"
     _WIDTH = 850
@@ -65,15 +67,9 @@ class TravelAgencyGUI:
         )
 
     def _init_components(self):
-        self.rbtns = []
-        self.chkbtns = []
-        # self.etxt = [] # TODO use
-        # self.cmbbox = None # TODO add
-        self.btn_submit = None
-        self.lstbox = None
+        self._chkbtns = []
         # TODO Rename methods: UImethods, logic...
         # TODO properties
-        # TODO UI class and logic class
         self._init_title()
         self._init_travel_type()
         self._init_objs()
@@ -172,22 +168,17 @@ class TravelAgencyGUI:
             fill = tkinter.X,
             pady = STYLE.NORMAL_MARGIN
         )
-        CHK_BTNS = ["Mochila", "Linterna", "GPS", "Mapa", "Prismáticos", "Cantimplora", "Botiquín", "Crema Solar"]
-        for chkbtn_label in CHK_BTNS:
+        for chkbtn_label in self._CHK_BTNS:
             v = tkinter.BooleanVar()
-            e = Checkbutton(
+            Checkbutton(
                 self._objs_container,
                 text = chkbtn_label,
                 variable = v
-            )
-            e.pack(
+            ).pack(
                 side = tkinter.LEFT,
                 padx = STYLE.NORMAL_MARGIN
             )
-            self.chkbtns.append({
-                "v": v,
-                "e": e
-            })
+            self._chkbtns.append(v)
 
     def _init_usr_data(self) -> None:
         self._data_container = tkinter.Frame(
@@ -307,3 +298,36 @@ class TravelAgencyGUI:
     @property
     def w(self):
         return self._window
+
+    # Form data
+    @property
+    def travel_type(self):
+        return self._rbtns_value.get()
+
+    @property
+    def travel_items(self):
+        items = []
+        for i in range(len(self._CHK_BTNS)):
+            if self._chkbtns[i].get():
+                items.append(self._CHK_BTNS[i])
+        return items
+
+    @property
+    def travel_name(self):
+        return self._txtf_name.get()
+
+    @property
+    def travel_surname(self):
+        return self._txtf_surname.get()
+
+    @property
+    def travel_poblacion(self):
+        return self._cmbbox_poblacion.get()
+
+    @property
+    def travel_address(self):
+        return self._txtf_address.get()
+
+    @property
+    def travel_phone(self):
+        return self._txtf_phone.get()
