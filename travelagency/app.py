@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/02 16:56:06 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/03 15:39:50 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 16:05:02 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,8 +35,8 @@ class TravelAgencyApp:
             return
         items = self._gui.travel_items
         usr_data = [
-            ("nombre", self._gui.travel_name, r'^[A-Za-z ]+$'),
-            ("apellidos", self._gui.travel_surname, r'^[A-Za-z ]+$'),
+            ("nombre", self._gui.travel_name, r'^[A-Za-zñÑáÁÉéíÍÓóÚú ]+$'),
+            ("apellidos", self._gui.travel_surname, r'^[A-Za-zñÑáÁÉéíÍÓóÚú ]+$'),
             ("dirección", self._gui.travel_address, None),
             ("teléfono", self._gui.travel_phone, r'^(\+\d{2,3})? ?\d{3} ?(\d{3} ?\d{3}|\d{2} ?\d{2} ?\d{2})$'),
             ("población", self._gui.travel_poblacion, None),
