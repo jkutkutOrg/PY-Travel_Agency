@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/02 16:52:01 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/03 10:47:47 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 15:14:40 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,11 @@ class TravelAgencyStyle:
                 'TCombobox': {
                     'configure': {
                         'selectbackground': cls.BG,
+                        'selectforeground': cls.FG,
                         'fieldbackground': cls.BG,
+                        'fieldforeground': cls.FG,
                         'background': cls.BG,
+                        'foreground': cls.FG,
                         'TComboboxPopdown': {
                             'configure': {
                                 'background': cls.BG,
@@ -51,5 +54,3 @@ class TravelAgencyStyle:
             }
         )
         style.theme_use('customstyle')
-
-

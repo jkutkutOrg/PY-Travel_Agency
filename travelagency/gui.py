@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/02/28 09:33:30 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/03 11:47:01 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/03 11:51:49 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -227,7 +227,8 @@ class TravelAgencyGUI:
         self._cmbbox_poblacion = ttk.Combobox(
             self._data_containers[-1],
             state = "readonly",
-            values = CMBBOX_OPTIONS
+            values = CMBBOX_OPTIONS,
+            style='TCombobox'
         )
         self._cmbbox_poblacion.pack(
             side = tkinter.LEFT,
